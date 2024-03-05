@@ -1,0 +1,43 @@
+---
+import Container from "@components/container.astro";
+import { Astronav, MenuItems } from "astro-navbar";
+
+const menuitems = [
+  {
+    title: "Home",
+    path: "/",
+  },
+  {
+    title: "Fetch Data",
+    path: "/fetch-data",
+  },
+
+];
+---
+
+<Container>
+  <header class="flex flex-col lg:flex-row justify-between items-center my-5">
+    <Astronav>
+      <div class="flex w-full lg:w-auto items-center justify-between">
+        <a href="/" class="text-gray-100 hover:text-gray-400">dotnet-astro</a>
+      </div>
+      <MenuItems class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0">
+        <ul class="flex flex-col lg:flex-row lg:gap-3">
+          {
+            menuitems.map((item, index) => (
+              <>
+                <li>
+                <a
+                    href={item.path}
+                    class="flex lg:px-3 py-2 items-center text-gray-100 hover:text-gray-400">
+                    <span> {item.title}</span>
+                </a>
+                </li>
+              </>
+            ))
+          }
+        </ul>
+      </MenuItems>
+    </Astronav>
+  </header>
+</Container>
